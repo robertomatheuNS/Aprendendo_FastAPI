@@ -1,0 +1,13 @@
+Rodar o servidor: python -m uvicorn main:app --app-dir src --host 0.0.0.0 --port 8000 --reload
+rodar no navegador: http://localhost:8000
+
+-------------------------
+github
+
+feat: adiciona primeiro endpoint de oportunidades
+fix: corrige resposta do endpoint
+refactor: reorganiza estrutura do projeto
+docs: atualiza documentação
+chore: configura ambiente de desenvolvimento
+
+-------------------------
