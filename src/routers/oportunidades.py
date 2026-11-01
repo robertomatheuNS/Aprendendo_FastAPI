@@ -1,5 +1,6 @@
 from schemas.oportunidade import CriarOportunidade
-from fastapi import APIRouter
+from services import oportunidade_service
+from fastapi import APIRouter, HTTPException
 
 router = APIRouter()
 
@@ -18,4 +19,13 @@ def listar_oportunidade3():
 
 @router.post("/oportunidades")
 def criar_oportunidade(nova_oportunidade: CriarOportunidade):
-    return nova_oportunidade
+
+    resultado = oportunidade_service.criar_oportunidades(nova_oportunidade)
+
+    if "erro" in resultado:
+        raise HTTPException(
+            status_code=400,
+            detail=resultado["erro"]
+        )
+
+    return resultado

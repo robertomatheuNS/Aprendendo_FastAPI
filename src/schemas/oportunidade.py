@@ -1,3 +1,4 @@
+from datetime import date
 from pydantic import BaseModel, Field
 
 
@@ -8,3 +9,5 @@ class CriarOportunidade(BaseModel):
     professor: str
     quantidade_vagas: int = Field(gt=0)
     remoto: bool
+    data_inicio: date
+    data_fim: date
