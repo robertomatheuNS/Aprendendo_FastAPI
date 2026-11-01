@@ -1,3 +1,4 @@
+from schemas.oportunidade import CriarOportunidade
 from fastapi import APIRouter
 
 router = APIRouter()
@@ -14,3 +15,7 @@ def listar_oportunidade2():
 @router.get("/oportunidade3")
 def listar_oportunidade3():
     return "Programa Jovem Aprendiz"
+
+@router.post("/oportunidades")
+def criar_oportunidade(nova_oportunidade: CriarOportunidade):
+    return nova_oportunidade
