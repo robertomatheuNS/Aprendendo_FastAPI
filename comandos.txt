@@ -10,4 +10,35 @@ refactor: reorganiza estrutura do projeto
 docs: atualiza documentação
 chore: configura ambiente de desenvolvimento
 
+Git Workflow
+
+1. Atualizar a main
+   git switch main
+   git pull origin main
+
+2. Criar uma branch
+   git switch -c feat/nome-da-funcionalidade
+
+3. Desenvolver e testar
+   Escrever código e validar o funcionamento.
+
+4. Preparar alterações
+   git add .
+   git diff --cached
+
+5. Criar commit
+   git commit -m "feat: descrição"
+
+6. Enviar ao GitHub
+   git push -u origin nome-da-branch
+
+7. Criar Pull Request e fazer merge
+   Integrar as alterações na main.
+
+8. Limpar a branch
+   git switch main
+   git pull origin main
+   git branch -d nome-da-branch #remove a branch local
+   git push origin --delete feat/create-opportunities-endpoint #remove a branch do repositório
+
 -------------------------

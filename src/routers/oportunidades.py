@@ -5,22 +5,26 @@ from fastapi import APIRouter, HTTPException
 router = APIRouter()
 
 
-@router.get("/oportunidade1")
-def listar_oportunidade1():
-    return "Estágio em Desenvolvimento"
+@router.get("/listar_oportunidades")
+def listar_oportunidades():
+    return oportunidade_service.listar_oportunidades()
 
-@router.get("/oportunidade2")
-def listar_oportunidade2():
-    return "Bolsa de Iniciação Científica"
+@router.get("/listar_oportunidades/{oportunidade_id}")
+def listar_oportunidade_por_id(oportunidade_id: int):
+    resultado = oportunidade_service.buscar_oportunidade_por_id(oportunidade_id)
 
-@router.get("/oportunidade3")
-def listar_oportunidade3():
-    return "Programa Jovem Aprendiz"
+    if resultado == None:
+        raise HTTPException(
+                    status_code=404,
+                    detail="Oportunidade não encontrada"
+                )
 
-@router.post("/oportunidades")
+    return resultado
+
+@router.post("/criar_oportunidade")
 def criar_oportunidade(nova_oportunidade: CriarOportunidade):
 
-    resultado = oportunidade_service.criar_oportunidades(nova_oportunidade)
+    resultado = oportunidade_service.criar_oportunidade(nova_oportunidade)
 
     if "erro" in resultado:
         raise HTTPException(
